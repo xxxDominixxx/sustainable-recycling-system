@@ -93,10 +93,13 @@ BERÄKNA MILJÖPÅVERKAN
 3. Visa återvinningsinstruktion 
 
 
-TEAM 
+TEAM: 
 Dominik Biscan - Projekt manager
+
 Charlotta Kroksson - Software Arkitekt 
+
 Felicia Hornesjö - BackEnd Developer
+
 Mimoza Husenaj - FrontEnd Developer
 
 
