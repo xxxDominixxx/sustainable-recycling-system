@@ -93,7 +93,7 @@ Charlotta Kroksson - Software Arkitekt
 
 Felicia Hornesjö - BackEnd Developer
 
-Mimoza Husenaj - FrontEnd Developer
+Mimoza Hysenaj - FrontEnd Developer
 
 
 
