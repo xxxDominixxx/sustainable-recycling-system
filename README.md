@@ -69,6 +69,7 @@ UNSURE:
 - Meny
 
 ARKITEKTURELLA BESLUT:
+
 Systemet är uppbyggt enligt en lagerarkitektur med fyra lager:
 
 DOMÄNLAGER:
