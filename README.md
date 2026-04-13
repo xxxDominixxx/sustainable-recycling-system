@@ -68,6 +68,41 @@ SERVICES:
 UNSURE:
 - Meny
 
+ARKITEKTURELLA BESLUT:
+Systemet är uppbyggt enligt en lagerarkitektur med fyra lager:
+
+DOMÄNLAGER:
+- Product
+- Material
+- RecyclingGuidance
+- RecyclingCategory 
+- CalculateImpact
+- ProductStorage
+
+APPLIKATIONSLAGER:
+- ProductService - ska styra allt som har med Product 
+- SimpleImpactCalculator - den använder CalculateImpact - implementerar logik 
+- MaterialService - hanterar Material och eventuellt filtrerar och hittar material 
+- RecyclingService - går igenom material och returnerar instruktioner för återvinning
+
+PRESENTATIONSLAGER: 
+- ConsuleMenu 
+- ProductMenu
+- MaterialMenu
+- RecyclingMenu 
+
+INFRASTRUKTURLAGER: 
+- MemoryStorage - implementera utifrån interface ProductStorage 
+
+INTERFACES:
+CalculateImpact ligger i domänlagret och bestämmer hur miljöpåverkan ska räknas ut och implementeras sen i applikationslagret SimpleImpactCaculator.
+ProductStorage ligger  i domänlagret och bestämmer hur produkter ska spara och hämtas och implementeras sen i infrastrukturslagret MemoryStorage. 
+
+BEROENDERIKTNING: 
+Presentationslager -> Applikationslager -> Domänlager 
+Infrastrukturlagret ligger under domänlagret. 
+
+
 SYSTEMFLÖDEN 
 SKAPA PRODUKT 
 1. Användare anger produktdata
