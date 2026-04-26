@@ -1,11 +1,24 @@
 import java.util.Scanner;
+import application.CreateProductRequest;
+import application.CreateProductResult;
+import application.ProductService;
+import domain.Product;
 
 public class ProductMenu {
 
     private final Scanner scanner;
+    private final ProductService productService;
+    private final InputParser inputParser;
+    private final OutputFormatter outputFormatter;
 
-    public ProductMenu(Scanner scanner) {
+    public ProductMenu(Scanner scanner,
+                       ProductService productService,
+                       InputParser inputParser,
+                       OutputFormatter outputFormatter) {
         this.scanner = scanner;
+        this.productService = productService;
+        this.inputParser = inputParser;
+        this.outputFormatter = outputFormatter;
     }
 
     public void run() {
@@ -27,23 +40,23 @@ public class ProductMenu {
             switch (choice) {
 
                 case "1":
-                    System.out.println("Product creation.mp3");
+                    createProduct();
                     break;
 
                 case "2":
-                    System.out.println("Product added to list");
+                    System.out.println("Product added to list"); //Not yet implemented
                     break;
 
                 case "3":
-                    System.out.println("Product removed from list");
+                    System.out.println("Product removed from list"); //Not yet implemented
                     break;
-                
+
                 case "4":
-                    System.out.println("Displaying list...");
+                    listProducts();
                     break;
 
                 case "5":
-                    System.out.println("Displaying product information");
+                    System.out.println("Displaying product information"); //Not yet implemented
                     break;
 
                 case "b":
@@ -55,5 +68,17 @@ public class ProductMenu {
             }
 
         } while (!choice.equalsIgnoreCase("b"));
+    }
+
+    private void createProduct() {
+        CreateProductRequest request = inputParser.readCreateProductRequest();
+        CreateProductResult result = productService.createProduct(request);
+        outputFormatter.printCreateProduct(result);
+    }
+
+    private void listProducts() {
+        for (Product p : productService.getAllProducts()) {
+            System.out.println(p.getProductName());
+        }
     }
 }
