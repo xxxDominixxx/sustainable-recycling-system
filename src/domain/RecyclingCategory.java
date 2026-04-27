@@ -1,5 +1,5 @@
 package domain;
-
+    // Represents different recycling material categories for furniture
 public enum RecyclingCategory {
     WOOD,
     METAL,
@@ -9,7 +9,7 @@ public enum RecyclingCategory {
     ELECTRONICS,
     MIXED
 
-    // Represents different recycling material categories for furniture
+
 
 
 }
