@@ -1,56 +1,68 @@
 package domain;
 
 public class Material {
+
     private final String materialName;
-    private final String materialCategory;
-    private final double impactValue;
-    private final String recyclingCategory;
+    private final double impact;
+    private final RecyclingCategory category;
+    private final RecyclingGuidance guidance;
+    private final double percentage;
 
     public Material(String materialName,
-                    String materialCategory,
-                    double impactValue,
-                    String recyclingCategory) {
+                    double impact,
+                    RecyclingCategory category,
+                    RecyclingGuidance guidance,
+                    double percentage) {
 
         if (materialName == null || materialName.trim().isEmpty()) {
             throw new IllegalArgumentException("Material name cannot be empty.");
         }
 
-        if (materialCategory == null || materialCategory.trim().isEmpty()) {
-            throw new IllegalArgumentException("Material category cannot be empty.");
+        if (impact < 0) {
+            throw new IllegalArgumentException("Impact cannot be negative.");
         }
 
-        if (impactValue < 0) {
-            throw new IllegalArgumentException("Impact value cannot be negative.");
+        if (category == null) {
+            throw new IllegalArgumentException("Category cannot be null.");
         }
 
-        if (recyclingCategory == null || recyclingCategory.trim().isEmpty()) {
-            throw new IllegalArgumentException("Recycling category cannot be empty.");
+        if (guidance == null) {
+            throw new IllegalArgumentException("Guidance cannot be null.");
+        }
+
+        if (percentage < 0 || percentage > 100) {
+            throw new IllegalArgumentException("Percentage must be between 0 and 100.");
         }
 
         this.materialName = materialName;
-        this.materialCategory = materialCategory;
-        this.impactValue = impactValue;
-        this.recyclingCategory = recyclingCategory;
+        this.impact = impact;
+        this.category = category;
+        this.guidance = guidance;
+        this.percentage = percentage;
     }
 
     public String getMaterialName() {
         return materialName;
     }
 
-    public String getMaterialCategory() {
-        return materialCategory;
+    public double getImpact() {
+        return impact;
     }
 
-    public double getImpactValue() {
-        return impactValue;
+    public RecyclingCategory getCategory() {
+        return category;
     }
 
-    public String getRecyclingCategory() {
-        return recyclingCategory;
+    public RecyclingGuidance getGuidance() {
+        return guidance;
+    }
+
+    public double getPercentage() {
+        return percentage;
     }
 
     @Override
     public String toString() {
-        return materialName + " (" + materialCategory + ")";
+        return materialName + " (" + category + ")";
     }
 }
