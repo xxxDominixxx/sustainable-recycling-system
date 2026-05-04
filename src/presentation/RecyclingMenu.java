@@ -16,8 +16,8 @@ public class RecyclingMenu {
 
         do {
             System.out.println("\n==== Recycling Menu ====");
-            System.out.println("1) Check if product is recyclable");
-            System.out.println("2) Display recycling guidance");
+            System.out.println("1) Choose product by name"); //display list from product storage?
+            System.out.println("2) Provide guidance"); //based on product category
             System.out.println("b) Back to main menu");
 
             System.out.print("Enter choice: ");
@@ -26,11 +26,11 @@ public class RecyclingMenu {
             switch (choice) {
 
                 case "1":
-                    System.out.println("To recycle or not to recycle");
+                    System.out.println("Your product is:");
                     break;
 
                 case "2":
-                    System.out.println("Guidance");
+                    System.out.println("Provide guidance");
                     break;
 
                 case "b":
