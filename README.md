@@ -99,6 +99,28 @@ INTERFACES:
 CalculateImpact ligger i domänlagret och bestämmer hur miljöpåverkan ska räknas ut och implementeras sen i applikationslagret SimpleImpactCaculator.
 ProductStorage ligger  i domänlagret och bestämmer hur produkter ska spara och hämtas och implementeras sen i infrastrukturslagret MemoryStorage. 
 
+
+DESIGN PATTERNS: 
+Strategy Pattern - Beräkning för miljöpåverkan 
+Systemet ska ha möjlighet till att beräkna miljöpåverkan på önskat sätt, antingen en summering av produktens totala miljöpåverkan eller genom uträkning av produktens livsspann.
+
+För att möjliggöra detta används Strategy Pattern. Interfacet `CalculateImpact` definierar ett gemensamt kontrakt för hur beräkningen ska utföras, medan konkreta implementationer som `SimpleImpactCalculator` och `LifespanImpactCalculator` ansvarar för den faktiska beräkningslogiken. Klasserna i sig står sedan för implementation av beräkningslogiken. 
+
+Om denna logik istället hade placerats direkt i ProductService skulle klassen behöva ändras varje gång en ny beräkningsmetod införs, vilket bryter mot Open/Closed Principle (OCP). Genom att använda Strategy Pattern kan nya beräkningsstrategier läggas till utan att ändra befintlig kod. Nu förbättras designen eftersom den blir mer flexibel och lättare att utöka vid framtida behov om till exempel nya beräkningsmetoder behöver läggas till. 
+
+Förbättrar designen genom att:
+- Gör det enkelt att lägga till nya beräkningsmetoder
+- Minskar kopplingen mellan klasser
+- Lättare att testköra
+
+
+
+
+
+
+
+
+
 BEROENDERIKTNING: 
 Presentationslager -> Applikationslager -> Domänlager 
 Infrastrukturlagret ligger under domänlagret. 
