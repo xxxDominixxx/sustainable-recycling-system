@@ -17,16 +17,14 @@ public class MaterialService {
     public void createMaterial(String materialName,
                                double impact,
                                RecyclingCategory category,
-                               RecyclingGuidance guidance,
-                               double percentage) {
+                               RecyclingGuidance guidance) {
 
         Material newMaterial = new Material(
                 materialName,
                 impact,
                 category,
-                guidance,
-                percentage
-        );
+                guidance
+                );
 
         materials.add(newMaterial);
     }

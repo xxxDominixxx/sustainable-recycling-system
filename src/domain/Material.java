@@ -6,13 +6,13 @@ public class Material {
     private final double impact;
     private final RecyclingCategory category;
     private final RecyclingGuidance guidance;
-    private final double percentage;
+   
 
     public Material(String materialName,
                     double impact,
                     RecyclingCategory category,
-                    RecyclingGuidance guidance,
-                    double percentage) {
+                    RecyclingGuidance guidance)
+                    {
 
         if (materialName == null || materialName.trim().isEmpty()) {
             throw new IllegalArgumentException("Material name cannot be empty.");
@@ -30,15 +30,11 @@ public class Material {
             throw new IllegalArgumentException("Guidance cannot be null.");
         }
 
-        if (percentage < 0 || percentage > 100) {
-            throw new IllegalArgumentException("Percentage must be between 0 and 100.");
-        }
-
         this.materialName = materialName;
         this.impact = impact;
         this.category = category;
         this.guidance = guidance;
-        this.percentage = percentage;
+    
     }
 
     public String getMaterialName() {
@@ -57,9 +53,7 @@ public class Material {
         return guidance;
     }
 
-    public double getPercentage() {
-        return percentage;
-    }
+ 
 
     @Override
     public String toString() {
