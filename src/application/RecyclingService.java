@@ -9,8 +9,8 @@ public class RecyclingService {
 
     private final CalculateImpact impactCalculator;
 
-    public RecyclingService() {
-        this.impactCalculator = new SimpleImpactCalculator();
+    public RecyclingService(CalculateImpact impactCalculator) {
+        this.impactCalculator = impactCalculator;
     }
 
     public double calculateImpact(Product product) {

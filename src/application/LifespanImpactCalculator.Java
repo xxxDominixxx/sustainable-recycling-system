@@ -1,10 +1,10 @@
 package application;
 
 import domain.CalculateImpact;
-import domain.Material;
 import domain.Product;
+import domain.Material;
 
-public class SimpleImpactCalculator implements CalculateImpact {
+public class LifespanImpactCalculator implements CalculateImpact {
 
     @Override
     public double calculate(Product product) {
@@ -14,6 +14,10 @@ public class SimpleImpactCalculator implements CalculateImpact {
             totalImpact += material.getImpact() * (material.getPercentage() / 100.0);
         }
 
-        return totalImpact;
+        if (product.getEstimatedLifespan() <= 0) {
+            return totalImpact;
+        }
+
+        return totalImpact / product.getEstimatedLifespan();
     }
 }

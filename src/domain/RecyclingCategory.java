@@ -13,3 +13,4 @@ public enum RecyclingCategory {
 
 
 }
+// Product kan vara kopplad till sitt category och category här sitt egen guidance?
