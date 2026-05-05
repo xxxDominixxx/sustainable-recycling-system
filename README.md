@@ -1,12 +1,12 @@
 # sustainable-recycling-system
 Console based sustainable product and recycling management system
 
-PROJEKTÖVERSIKT: 
+# PROJEKTÖVERSIKT: 
 Detta system hanterar möblers miljöpåverkan och ger instruktioner hur man på bästa sätt återvinner olika typer av material. 
 SYFTE: 
 Syftet med systemet är att hantera produkter och beräkna miljöpåverkan och ge riktlinjer för återvinning. Ska underlätta för att fatta hållbara beslut. 
 
-FUNKTIONALET: 
+ ### FUNKTIONALET: 
 - Skapa produkter (namn, kategori, beräknad livslängd, produktkomposation)
 - Lista befintliga produkter
 - Visa detaljerad produktinformation 
@@ -14,19 +14,19 @@ FUNKTIONALET:
 - Återvinningsinstruktioner
 - Beräkna miljöpåverkan 
 
-INGÅR INTE:
+### INGÅR INTE:
 - Betalningssystem
 - Logistik/frakt till kunder 
 
-SYSTEMKRAV
+## SYSTEMKRAV
 
-FUNKTIONELLA KRAV:
+### FUNKTIONELLA KRAV:
 - Skapa och hantera produkter
 - Koppla material till produkter
 - Beräkna total miljöpåverkan
 - Ge återvinningsguiden instruktioner 
 
-ICKE FUNKTIONELLA KRAV:
+### ICKE FUNKTIONELLA KRAV:
 PRESTANDA: 
 - Systemet ska hantera minst 100 samtidiga användare
 
@@ -37,42 +37,42 @@ ANVÄNDBARHET:
 ARKITEKTUR 
 - Tydlig separation mellan input/output 
 
-DOMÄNMODELL
+# DOMÄNMODELL
 
-DOMÄNBEGREPP:
+## DOMÄNBEGREPP:
 - Produkt
 - Material
 - Miljöpåverkan
 - Livslängd
 
 
-VERBDOMÄN:
+## VERBDOMÄN:
 - Registrera produkt 
 - Beräkna miljöpåverkan
 - Lista produkter
 
-KLASSIFICERING
+## KLASSIFICERING
 ENTITIES: 
 - Produkt(ID)
 - Återvinningsprocess
 - Material 
 
-VALUE OBJECTS:
+### VALUE OBJECTS:
 - Miljöpåverkan
 - Livslängd
 
-SERVICES: 
+### SERVICES: 
 - MiljöpåverkanService
 - ÅtervinningsService 
 
-UNSURE:
+### UNSURE:
 - Meny
 
-ARKITEKTURELLA BESLUT:
+# ARKITEKTURELLA BESLUT:
 
 Systemet är uppbyggt enligt en lagerarkitektur med fyra lager:
 
-DOMÄNLAGER:
+## DOMÄNLAGER:
 - Product
 - Material
 - RecyclingGuidance
@@ -80,28 +80,29 @@ DOMÄNLAGER:
 - CalculateImpact
 - ProductStorage
 
-APPLIKATIONSLAGER:
+## APPLIKATIONSLAGER:
 - ProductService - ska styra allt som har med Product 
 - SimpleImpactCalculator - den använder CalculateImpact - implementerar logik 
 - MaterialService - hanterar Material och eventuellt filtrerar och hittar material 
 - RecyclingService - går igenom material och returnerar instruktioner för återvinning
 
-PRESENTATIONSLAGER: 
+## PRESENTATIONSLAGER: 
 - ConsuleMenu 
 - ProductMenu
 - MaterialMenu
 - RecyclingMenu 
 
-INFRASTRUKTURLAGER: 
+## INFRASTRUKTURLAGER: 
 - MemoryStorage - implementera utifrån interface ProductStorage 
 
-INTERFACES:
+## INTERFACES:
 CalculateImpact ligger i domänlagret och bestämmer hur miljöpåverkan ska räknas ut och implementeras sen i applikationslagret SimpleImpactCaculator.
 ProductStorage ligger  i domänlagret och bestämmer hur produkter ska spara och hämtas och implementeras sen i infrastrukturslagret MemoryStorage. 
 
 
-DESIGN PATTERNS: 
-Strategy Pattern - Beräkning för miljöpåverkan 
+## DESIGN PATTERNS: 
+
+### Strategy Pattern - Beräkning för miljöpåverkan 
 Systemet ska ha möjlighet till att beräkna miljöpåverkan på önskat sätt, antingen en summering av produktens totala miljöpåverkan eller genom uträkning av produktens livsspann.
 
 För att möjliggöra detta används Strategy Pattern. Interfacet `CalculateImpact` definierar ett gemensamt kontrakt för hur beräkningen ska utföras, medan konkreta implementationer som `SimpleImpactCalculator` och `LifespanImpactCalculator` ansvarar för den faktiska beräkningslogiken. Klasserna i sig står sedan för implementation av beräkningslogiken. 
@@ -114,19 +115,34 @@ Förbättrar designen genom att:
 - Lättare att testköra
 
 
+### Factory Pattern – Återvinningshantering
+
+För att hantera olika typer av återvinning används Factory Pattern. 
+
+`RecyclingGuidanceFactory` ansvarar för att skapa rätt typ av återvinningshantering baserat på materialets egenskaper. 
+
+Tidigare placerades den direkt i `RecyclingService` och innehöll villkorssatser som case/switch för varje typ av material eller återvinningsfall. Detta gjorde koden svårare att underhålla och mindre flexibel vid utökning av kod. 
+
+'RecyclingService' skapar rätt objekt med hjälp av 'RecyclingGuidanceFactory'. Factory gör systemet mer flexibelt och enklare att vidareutveckla med nya återvinningsregler eftersom det då endast är factoryn som behöver ändras. 
+
+Detta förbättrar designen genom att:
+- Mindre koppling mellan delar av systemet
+- Allt skapas på ett ställe
+- Lätt att utöka 
+
+  
 
 
 
 
 
 
-
-BEROENDERIKTNING: 
+## BEROENDERIKTNING: 
 Presentationslager -> Applikationslager -> Domänlager 
 Infrastrukturlagret ligger under domänlagret. 
 
 
-SYSTEMFLÖDEN 
+# SYSTEMFLÖDEN 
 SKAPA PRODUKT 
 1. Användare anger produktdata
 2. Material kopplas till produkten 
