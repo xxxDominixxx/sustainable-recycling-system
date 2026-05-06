@@ -1,2 +1,0 @@
-Chair|Wood|12
-Sofa|Mixed|15

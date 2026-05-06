@@ -8,17 +8,17 @@ import java.util.List;
 
 public class ProductService {
 
-    // SESSION (temporary products, not yet saved to file)
+    // SESSION storage (temporary)
     private final List<Product> sessionProducts = new ArrayList<>();
 
-    // PERSISTENCE (file storage via abstraction)
+    // FILE storage
     private final ProductStorage storage;
 
     public ProductService(ProductStorage storage) {
         this.storage = storage;
     }
 
-    // 1) CREATE PRODUCT (only stored in session)
+    // CREATE PRODUCT (session only)
     public CreateProductResult createProduct(CreateProductRequest request) {
 
         Product product = new Product(
@@ -32,14 +32,14 @@ public class ProductService {
         return new CreateProductResult(product.getProductName());
     }
 
-    // 2) MOVE PRODUCT FROM SESSION → FILE STORAGE
+    // MOVE CREATED PRODUCT TO FILE
     public void addProductToStorage(String productName) {
 
         Product target = null;
 
-        for (Product product : sessionProducts) {
-            if (product.getProductName().equals(productName)) {
-                target = product;
+        for (Product p : sessionProducts) {
+            if (p.getProductName().equals(productName)) {
+                target = p;
                 break;
             }
         }
@@ -52,12 +52,17 @@ public class ProductService {
         }
     }
 
-    // 3) GET ALL STORED PRODUCTS (FROM FILE)
+    // READ from file
     public List<Product> getAllProducts() {
         return storage.findAll();
     }
 
-    // OPTIONAL: view session products (useful for debugging / menu option 5)
+    // DELETE from file
+    public void removeProductFromStorage(String productName) {
+        storage.deleteByName(productName);
+    }
+
+    // view session products
     public List<Product> getSessionProducts() {
         return sessionProducts;
     }

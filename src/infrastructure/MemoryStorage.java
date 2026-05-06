@@ -7,7 +7,7 @@ import java.util.List;
 
 public class MemoryStorage implements ProductStorage {
 
-    private final File file = new File("products.txt");
+    private final File file = new File("StorageFiles/products.txt");
 
     @Override
     public void save(Product product) {
