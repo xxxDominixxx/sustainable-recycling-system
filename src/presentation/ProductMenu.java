@@ -1,6 +1,7 @@
 package presentation;
 
 import java.util.Scanner;
+
 import application.CreateProductRequest;
 import application.CreateProductResult;
 import application.ProductService;
@@ -46,11 +47,15 @@ public class ProductMenu {
                     break;
 
                 case "2":
-                    System.out.println("Product added to list"); //Not yet implemented
+                    System.out.print("Enter product name: ");
+                    String name = scanner.nextLine();
+
+                    productService.addProductToStorage(name);
+                    System.out.println("Product added to list.");
                     break;
 
                 case "3":
-                    System.out.println("Product removed from list"); //Not yet implemented
+                    System.out.println("Product removed from list (not implemented yet)");
                     break;
 
                 case "4":
@@ -58,7 +63,7 @@ public class ProductMenu {
                     break;
 
                 case "5":
-                    System.out.println("Displaying product information"); //Not yet implemented
+                    System.out.println("Displaying product information (not implemented yet)");
                     break;
 
                 case "b":

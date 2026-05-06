@@ -1,5 +1,9 @@
 package presentation;
+
 import java.util.Scanner;
+
+import application.ProductService;
+import infrastructure.MemoryStorage;
 
 public class Main {
 
@@ -7,8 +11,19 @@ public class Main {
 
         Scanner scanner = new Scanner(System.in);
 
+        // Create dependencies
+        ProductService productService = new ProductService(new MemoryStorage());
+        InputParser inputParser = new InputParser(scanner);
+        OutputFormatter outputFormatter = new OutputFormatter();
+
+        // Menus
         Menu menu = new Menu(scanner);
-        ProductMenu menuP = new ProductMenu(scanner);
+        ProductMenu menuP = new ProductMenu(
+                scanner,
+                productService,
+                inputParser,
+                outputFormatter
+        );
         MaterialMenu menuM = new MaterialMenu(scanner);
         RecyclingMenu menuR = new RecyclingMenu(scanner);
 
@@ -21,15 +36,15 @@ public class Main {
             switch (choice) {
 
                 case "1":
-                    menuP.run();    // switch to Product menu
+                    menuP.run();
                     break;
 
                 case "2":
-                    menuM.run();    // switch to Material menu
+                    menuM.run();
                     break;
 
                 case "3":
-                    menuR.run();    // switch to Recycling menu
+                    menuR.run();
                     break;
 
                 case "q":
