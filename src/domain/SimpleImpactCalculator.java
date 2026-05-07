@@ -1,8 +1,4 @@
-package application;
-
-import domain.CalculateImpact;
-import domain.Material;
-import domain.Product;
+package domain;
 
 public class SimpleImpactCalculator implements CalculateImpact {
 
