@@ -3,6 +3,7 @@ package application;
 import domain.Material;
 import domain.RecyclingCategory;
 import domain.RecyclingGuidance;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,21 +13,48 @@ public class MaterialService {
 
     public MaterialService() {
         materials = new ArrayList<>();
-    }
 
-    public void createMaterial(String materialName,
-                               double impact,
-                               RecyclingCategory category,
-                               RecyclingGuidance guidance) {
+        materials.add(new Material(
+                "Wood", 
+                0.31,
+                RecyclingCategory.LOW,
+                RecyclingGuidance.RECYCLE
+        ));
 
-        Material newMaterial = new Material(
-                materialName,
-                impact,
-                category,
-                guidance
-                );
+        materials.add(new Material(
+                "Virgin Aluminium",
+                12.0,
+                RecyclingCategory.HIGH,
+                RecyclingGuidance.RECYCLE
+        ));
 
-        materials.add(newMaterial);
+        materials.add(new Material(
+                "Virgin Steel",
+                2.2,
+                RecyclingCategory.HIGH,
+                RecyclingGuidance.RECYCLE
+        ));
+
+        materials.add(new Material(
+                "Paper",
+                0.50,
+                RecyclingCategory.MEDIUM,
+                RecyclingGuidance.RECYCLE  
+        ));
+
+        materials.add(new Material(
+                "Cotton Fabric",
+                5.5,
+                RecyclingCategory.LOW,
+                RecyclingGuidance.REUSE
+        ));
+
+        materials.add(new Material(
+                "HDPE Plastic",
+                2.0,
+                RecyclingCategory.MEDIUM,
+                RecyclingGuidance.RECYCLE
+        ));
     }
 
     public List<Material> getAllMaterials() {
@@ -47,21 +75,5 @@ public class MaterialService {
 
     public boolean materialExists(String materialName) {
         return findMaterialByName(materialName) != null;
-    }
-
-    public boolean removeMaterialByName(String materialName) {
-
-        for (int i = 0; i < materials.size(); i++) {
-            Material currentMaterial = materials.get(i);
-
-            if (currentMaterial.getMaterialName()
-                    .equalsIgnoreCase(materialName)) {
-
-                materials.remove(i);
-                return true;
-            }
-        }
-
-        return false;
     }
 }

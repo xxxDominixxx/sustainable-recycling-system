@@ -1,16 +1,21 @@
 package domain;
-    // Represents different recycling material categories for furniture
+
 public enum RecyclingCategory {
-    WOOD,
-    METAL,
-    PLASTIC,
-    TEXTILE,
-    GLASS,
-    ELECTRONICS,
-    MIXED
 
+    LOW("Low environmental impact"),
+    MEDIUM("Medium environmental impact"),
+    HIGH("High environmental impact");
 
+    private final String description;
 
+    RecyclingCategory(String description) {
+        this.description = description;
+    }
 
+    public String getDescription() {
+        return description;
+    }
 }
-// Product kan vara kopplad till sitt category och category här sitt egen guidance?
+
+
+

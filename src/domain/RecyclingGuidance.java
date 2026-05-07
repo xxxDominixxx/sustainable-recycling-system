@@ -1,17 +1,16 @@
 package domain;
 
-public class RecyclingGuidance {
+public enum RecyclingGuidance {
 
-    private final RecyclingCategory category;
+    RECYCLE("Recycle at appropriate station"),
+    REUSE("Reuse or donate if possible"),
+    COMPOST("Can be composted"),
+    DISPOSE("Dispose in general waste");
+
     private final String instruction;
 
-    public RecyclingGuidance(RecyclingCategory category, String instruction) {
-        this.category = category;
+    RecyclingGuidance(String instruction) {
         this.instruction = instruction;
-    }
-
-    public RecyclingCategory getCategory() {
-        return category;
     }
 
     public String getInstruction() {
