@@ -1,12 +1,20 @@
 package presentation;
+
 import java.util.Scanner;
+
+import application.MaterialService;
+import domain.Material;
 
 public class MaterialMenu {
 
     private final Scanner scanner;
+    private final MaterialService materialService;
 
-    public MaterialMenu(Scanner scanner) {
+    public MaterialMenu(Scanner scanner,
+                        MaterialService materialService) {
+
         this.scanner = scanner;
+        this.materialService = materialService;
     }
 
     public void run() {
@@ -14,9 +22,9 @@ public class MaterialMenu {
         String choice;
 
         do {
+
             System.out.println("\n==== Material Menu ====");
             System.out.println("1) Material list");
-            System.out.println("2) Impact value");
             System.out.println("b) Back to main menu");
 
             System.out.print("Enter choice: ");
@@ -25,11 +33,7 @@ public class MaterialMenu {
             switch (choice) {
 
                 case "1":
-                    System.out.println("Displaying the list of materials"); //not yet implemented
-                    break;
-
-                case "2":
-                    System.out.println("Displaying impact value of material"); //Not yet implemented
+                    showMaterials();
                     break;
 
                 case "b":
@@ -41,5 +45,23 @@ public class MaterialMenu {
             }
 
         } while (!choice.equalsIgnoreCase("b"));
+    }
+
+    private void showMaterials() {
+
+        System.out.println("\n--- Materials ---");
+
+        for (Material m :
+                materialService.getAllMaterials()) {
+
+            System.out.println(
+                    m.getMaterialName()
+                            + " | Impact: "
+                            + m.getImpact()
+                            + " | "
+                            + m.getCategory()
+                            .getDescription()
+            );
+        }
     }
 }

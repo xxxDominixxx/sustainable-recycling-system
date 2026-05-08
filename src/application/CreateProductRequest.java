@@ -1,22 +1,24 @@
 package application;
 
-public class CreateProductRequest {
-    private String productName;
-    private String productCategory;
-    private int estimatedLifespan;
+import domain.ProductMaterial;
+import java.util.List;
 
-    public CreateProductRequest(String productName, String productCategory, int estimatedLifespan) {
+public class CreateProductRequest {
+
+    private final String productName;
+    private final List<ProductMaterial> materials;
+
+    public CreateProductRequest(String productName,
+                                List<ProductMaterial> materials) {
         this.productName = productName;
-        this.productCategory = productCategory;
-        this.estimatedLifespan = estimatedLifespan;
+        this.materials = materials;
     }
+
     public String getProductName() {
         return productName;
     }
-    public String getProductCategory() {
-        return productCategory;
-    }
-    public int getEstimatedLifespan() {
-        return estimatedLifespan;
+
+    public List<ProductMaterial> getMaterials() {
+        return materials;
     }
 }

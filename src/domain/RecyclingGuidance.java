@@ -1,19 +1,24 @@
 package domain;
 
-public enum RecyclingGuidance {
-
-    RECYCLE("Recycle at appropriate station"),
-    REUSE("Reuse or donate if possible"),
-    COMPOST("Can be composted"),
-    DISPOSE("Dispose in general waste");
+public class RecyclingGuidance {
 
     private final String instruction;
 
-    RecyclingGuidance(String instruction) {
+    public RecyclingGuidance(String instruction) {
+
+        if (instruction == null || instruction.isBlank()) {
+            throw new IllegalArgumentException("Instruction cannot be empty");
+        }
+
         this.instruction = instruction;
     }
 
     public String getInstruction() {
+        return instruction;
+    }
+
+    @Override
+    public String toString() {
         return instruction;
     }
 }

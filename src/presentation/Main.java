@@ -1,8 +1,8 @@
 package presentation;
 
 import java.util.Scanner;
-
 import application.ProductService;
+import application.MaterialService;
 import infrastructure.MemoryStorage;
 
 public class Main {
@@ -11,20 +11,39 @@ public class Main {
 
         Scanner scanner = new Scanner(System.in);
 
-        // Create dependencies
-        ProductService productService = new ProductService(new MemoryStorage());
-        InputParser inputParser = new InputParser(scanner);
-        OutputFormatter outputFormatter = new OutputFormatter();
+        // ===== APPLICATION / INFRASTRUCTURE SETUP =====
+        ProductService productService =
+                new ProductService(new MemoryStorage());
 
-        // Menus
+        MaterialService materialService =
+                new MaterialService();
+
+        // ===== PRESENTATION HELPERS =====
+        InputParser inputParser =
+                new InputParser(scanner, materialService);
+
+        OutputFormatter outputFormatter =
+                new OutputFormatter();
+
+        ProductView productView =
+                new ProductView(scanner);
+
+        // ===== MENUS =====
         Menu menu = new Menu(scanner);
+
         ProductMenu menuP = new ProductMenu(
                 scanner,
                 productService,
                 inputParser,
-                outputFormatter
+                outputFormatter,
+                productView
         );
-        MaterialMenu menuM = new MaterialMenu(scanner);
+
+        MaterialMenu menuM = new MaterialMenu(
+                scanner,
+                materialService
+        );
+
         RecyclingMenu menuR = new RecyclingMenu(scanner);
 
         String choice;

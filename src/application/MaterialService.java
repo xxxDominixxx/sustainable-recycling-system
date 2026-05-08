@@ -18,42 +18,42 @@ public class MaterialService {
                 "Wood", 
                 0.31,
                 RecyclingCategory.LOW,
-                RecyclingGuidance.RECYCLE
+                new RecyclingGuidance("Recycle at appropriate station")
         ));
 
         materials.add(new Material(
                 "Virgin Aluminium",
                 12.0,
                 RecyclingCategory.HIGH,
-                RecyclingGuidance.RECYCLE
+                new RecyclingGuidance("Recycle at metal facility")
         ));
 
         materials.add(new Material(
                 "Virgin Steel",
                 2.2,
                 RecyclingCategory.HIGH,
-                RecyclingGuidance.RECYCLE
+                new RecyclingGuidance("Recycle at industrial metal")
         ));
 
         materials.add(new Material(
                 "Paper",
                 0.50,
                 RecyclingCategory.MEDIUM,
-                RecyclingGuidance.RECYCLE  
+                new RecyclingGuidance("Reycle at paper waste")
         ));
 
         materials.add(new Material(
                 "Cotton Fabric",
                 5.5,
                 RecyclingCategory.LOW,
-                RecyclingGuidance.REUSE
+                new RecyclingGuidance("Reuse or donate if possible")
         ));
 
         materials.add(new Material(
                 "HDPE Plastic",
                 2.0,
                 RecyclingCategory.MEDIUM,
-                RecyclingGuidance.RECYCLE
+                new RecyclingGuidance("Recycle plastic correctly")
         ));
     }
 

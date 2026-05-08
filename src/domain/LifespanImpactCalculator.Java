@@ -1,23 +1,22 @@
-package application;
-
-import domain.CalculateImpact;
-import domain.Product;
-import domain.Material;
+package domain;
 
 public class LifespanImpactCalculator implements CalculateImpact {
 
     @Override
     public double calculate(Product product) {
+
         double totalImpact = 0.0;
 
-        for (Material material : product.getMaterials()) {
-            totalImpact += material.getImpact() * (material.getPercentage() / 100.0);
+        for (ProductMaterial pm : product.getMaterials()) {
+            totalImpact += pm.getMaterial().getImpact()
+                    * (pm.getPercentage() / 100.0);
         }
 
-        if (product.getEstimatedLifespan() <= 0) {
-            return totalImpact;
+        if (totalImpact <= 0) {
+            return 0;
         }
 
-        return totalImpact / product.getEstimatedLifespan();
+        // Simple lifespan model (adjustable)
+        return Math.ceil(100.0 / totalImpact);
     }
 }

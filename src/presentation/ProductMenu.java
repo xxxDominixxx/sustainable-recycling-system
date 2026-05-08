@@ -1,12 +1,10 @@
 package presentation;
 
-import java.util.List;
 import java.util.Scanner;
 
 import application.CreateProductRequest;
 import application.CreateProductResult;
 import application.ProductService;
-import domain.Product;
 
 public class ProductMenu {
 
@@ -14,15 +12,19 @@ public class ProductMenu {
     private final ProductService productService;
     private final InputParser inputParser;
     private final OutputFormatter outputFormatter;
+    private final ProductView productView;
 
     public ProductMenu(Scanner scanner,
                        ProductService productService,
                        InputParser inputParser,
-                       OutputFormatter outputFormatter) {
+                       OutputFormatter outputFormatter,
+                       ProductView productView) {
+
         this.scanner = scanner;
         this.productService = productService;
         this.inputParser = inputParser;
         this.outputFormatter = outputFormatter;
+        this.productView = productView;
     }
 
     public void run() {
@@ -30,6 +32,7 @@ public class ProductMenu {
         String choice;
 
         do {
+
             System.out.println("\n==== Product Menu ====");
             System.out.println("1) Create Product");
             System.out.println("2) View session products");
@@ -47,33 +50,33 @@ public class ProductMenu {
                 case "1":
                     createProduct();
                     break;
-                
+
                 case "2":
-                    listSessionProducts();
+                    productView.showSessionProducts(
+                            productService.getSessionProducts()
+                    );
                     break;
 
                 case "3":
                     System.out.print("Enter product name: ");
-                    String name = scanner.nextLine();
-
-                    productService.addProductToStorage(name);
-                    System.out.println("Product added to list.");
+                    productService.addProductToStorage(scanner.nextLine());
+                    System.out.println("Product added to storage.");
                     break;
 
                 case "4":
-                    System.out.println("Enter product name to remove: ");
-                    String removeName = scanner.nextLine();
-
-                    productService.removeProductFromStorage(removeName);
+                    System.out.print("Enter product name to remove: ");
+                    productService.removeProductFromStorage(scanner.nextLine());
                     System.out.println("Product removed (if it existed).");
                     break;
 
                 case "5":
-                    listProducts();
+                    productView.showStoredProducts(
+                            productService.getAllProducts()
+                    );
                     break;
 
                 case "6":
-                    System.out.println("Displaying product information (not implemented yet)");
+                    productView.handleProductInfo(productService);
                     break;
 
                 case "b":
@@ -88,33 +91,13 @@ public class ProductMenu {
     }
 
     private void createProduct() {
-        CreateProductRequest request = inputParser.readCreateProductRequest();
-        CreateProductResult result = productService.createProduct(request);
+
+        CreateProductRequest request =
+                inputParser.readCreateProductRequest();
+
+        CreateProductResult result =
+                productService.createProduct(request);
+
         outputFormatter.printCreateProduct(result);
-    }
-
-    private void listProducts() {
-        for (Product p : productService.getAllProducts()) {
-            System.out.println(p.getProductName());
-        }
-    }
-
-    private void listSessionProducts() {
-        List<Product> sessionProducts = productService.getSessionProducts();
-
-        if (sessionProducts.isEmpty()) {
-            System.out.println("No products in session");
-            return;
-        }
-
-        System.out.println("\n--- Session Products ---");
-
-        for (Product p : sessionProducts) {
-            System.out.println(
-                p.getProductName() + " | " +
-                p.getProductCategory() + " | " +
-                p.getEstimatedLifespan()
-            );
-        }
     }
 }
