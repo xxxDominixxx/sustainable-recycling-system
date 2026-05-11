@@ -3,10 +3,9 @@ package presentation;
 import java.util.List;
 import java.util.Scanner;
 
+import application.ProductService;
 import domain.Product;
 import domain.ProductMaterial;
-
-import application.ProductService;
 
 public class ProductView {
 

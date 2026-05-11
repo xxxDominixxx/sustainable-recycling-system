@@ -1,14 +1,13 @@
 package presentation;
 
-import application.CreateProductRequest;
-import application.MaterialService;
-
-import domain.Material;
-import domain.ProductMaterial;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+
+import application.CreateProductRequest;
+import application.MaterialService;
+import domain.Material;
+import domain.ProductMaterial;
 
 public class InputParser {
 

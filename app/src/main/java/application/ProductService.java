@@ -1,10 +1,10 @@
 package application;
 
-import domain.*;
-import infrastructure.ProductStorage;
-
 import java.util.ArrayList;
 import java.util.List;
+
+import domain.*;
+import infrastructure.ProductStorage;
 
 public class ProductService {
 

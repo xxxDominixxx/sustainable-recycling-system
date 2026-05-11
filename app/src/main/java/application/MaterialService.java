@@ -1,11 +1,11 @@
 package application;
 
-import domain.Material;
-import domain.RecyclingCategory;
-import domain.RecyclingGuidance;
-
 import java.util.ArrayList;
 import java.util.List;
+
+import domain.RecyclingCategory;
+import domain.RecyclingGuidance;
+import domain.Material;
 
 public class MaterialService {
 

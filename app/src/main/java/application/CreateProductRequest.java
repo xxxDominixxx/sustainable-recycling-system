@@ -1,7 +1,8 @@
 package application;
 
-import domain.ProductMaterial;
 import java.util.List;
+
+import domain.ProductMaterial;
 
 public class CreateProductRequest {
 

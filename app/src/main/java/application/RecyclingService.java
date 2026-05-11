@@ -1,9 +1,9 @@
 package application;
 
-import domain.CalculateImpact;
-import domain.Product;
 import domain.RecyclingCategory;
 import domain.RecyclingGuidance;
+import domain.CalculateImpact;
+import domain.Product;
 
 public class RecyclingService {
 

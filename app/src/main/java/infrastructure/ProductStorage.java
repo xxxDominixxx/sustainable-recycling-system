@@ -1,7 +1,8 @@
 package infrastructure;
 
-import domain.Product;
 import java.util.List;
+
+import domain.Product;
 
 public interface ProductStorage {
     void save(Product product);

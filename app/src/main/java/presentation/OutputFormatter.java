@@ -1,5 +1,4 @@
 package presentation;
-
 import application.CreateProductResult;
 
 public class OutputFormatter {
