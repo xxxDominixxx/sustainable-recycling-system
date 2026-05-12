@@ -33,6 +33,7 @@ public class ProductView {
                             + p.getRecyclingCategory()
                             + " | "
                             + p.getEstimatedLifespan()
+                            +" year"
             );
         }
     }
@@ -55,6 +56,7 @@ public class ProductView {
                             + p.getRecyclingCategory()
                             + " | "
                             + p.getEstimatedLifespan()
+                            + " year"
             );
         }
     }
@@ -93,7 +95,7 @@ public class ProductView {
                 + found.getEstimatedLifespan() + " years");
 
         System.out.println("Environmental impact: "
-                + found.getCalculatedImpact());
+                + found.getCalculatedImpact() + " Co2/kg");
 
         System.out.println("\nMaterials:");
 
