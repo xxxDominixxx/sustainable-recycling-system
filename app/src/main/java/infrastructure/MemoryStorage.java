@@ -9,11 +9,11 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import application.MaterialService;
 import domain.Material;
 import domain.Product;
 import domain.ProductMaterial;
 import domain.RecyclingCategory;
-import application.MaterialService;
 
 public class MemoryStorage implements ProductStorage {
 
@@ -31,7 +31,7 @@ public class MemoryStorage implements ProductStorage {
 
             StringBuilder sb = new StringBuilder();
 
-            sb.append(product.getProductName()).append("|");
+            sb.append(product.getProductType()).append("|");
             sb.append(product.getRecyclingCategory()).append("|");
             sb.append(product.getEstimatedLifespan()).append("|");
             sb.append(product.getCalculatedImpact()).append("|");
@@ -134,7 +134,7 @@ public class MemoryStorage implements ProductStorage {
 
         for (Product p : products) {
 
-            if (!p.getProductName().equalsIgnoreCase(name)) {
+            if (!p.getProductType().equalsIgnoreCase(name)) {
                 updated.add(p);
             }
         }

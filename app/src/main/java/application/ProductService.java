@@ -3,7 +3,12 @@ package application;
 import java.util.ArrayList;
 import java.util.List;
 
-import domain.*;
+import domain.CalculateImpact;
+import domain.LifespanImpactCalculator;
+import domain.Product;
+import domain.ProductMaterial;
+import domain.RecyclingCategory;
+import domain.SimpleImpactCalculator;
 import infrastructure.ProductStorage;
 
 public class ProductService {
@@ -55,7 +60,7 @@ public class ProductService {
         sessionProducts.add(product);
 
         return new CreateProductResult(
-                product.getProductName()
+                product.getProductType()
         );
     }
 
@@ -95,7 +100,7 @@ public class ProductService {
 
         for (Product p : storage.findAll()) {
 
-            if (p.getProductName()
+            if (p.getProductType()
                     .equalsIgnoreCase(name)) {
 
                 return p;
@@ -111,7 +116,7 @@ public class ProductService {
 
         for (Product p : sessionProducts) {
 
-            if (p.getProductName().equals(name)) {
+            if (p.getProductType().equals(name)) {
                 found = p;
                 break;
             }

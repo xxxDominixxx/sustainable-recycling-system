@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Product {
 
-    private String productName;
+    private String productType;
     private RecyclingCategory recyclingCategory;
     private int estimatedLifespan;
     private double calculatedImpact;
@@ -16,7 +16,7 @@ public class Product {
                    RecyclingCategory recyclingCategory,
                    int estimatedLifespan) {
 
-        this.productName = productName;
+        this.productType = productName;
         this.recyclingCategory = recyclingCategory;
         this.estimatedLifespan = estimatedLifespan;
         this.materials = new ArrayList<>();
@@ -28,8 +28,8 @@ public class Product {
     }
 
     // GETTERS
-    public String getProductName() {
-        return productName;
+    public String getProductType() {
+        return productType;
     }
 
     public RecyclingCategory getRecyclingCategory() {

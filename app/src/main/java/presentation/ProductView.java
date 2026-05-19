@@ -28,7 +28,7 @@ public class ProductView {
         for (Product p : sessionProducts) {
 
             System.out.println(
-                    p.getProductName()
+                    p.getProductType()
                             + " | "
                             + p.getRecyclingCategory()
                             + " | "
@@ -51,7 +51,7 @@ public class ProductView {
         for (Product p : products) {
 
             System.out.println(
-                    p.getProductName()
+                    p.getProductType()
                             + " | "
                             + p.getRecyclingCategory()
                             + " | "
@@ -67,7 +67,7 @@ public class ProductView {
         System.out.println("\n--- Stored Products ---");
 
         for (Product p : productService.getAllProducts()) {
-            System.out.println("- " + p.getProductName());
+            System.out.println("- " + p.getProductType());
         }
 
         System.out.print("\nEnter product name: ");
@@ -89,7 +89,7 @@ public class ProductView {
 
         System.out.println("\n==== PRODUCT INFORMATION ====");
 
-        System.out.println("Name: " + found.getProductName());
+        System.out.println("Name: " + found.getProductType());
         System.out.println("Category: " + found.getRecyclingCategory());
         System.out.println("Estimated lifespan: "
                 + found.getEstimatedLifespan() + " years");
