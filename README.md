@@ -156,7 +156,20 @@ BERÄKNA MILJÖPÅVERKAN
 ÅTERVINNINGSGUIDE
 1. Identifiera material
 2. Hantera blandmaterial
-3. Visa återvinningsinstruktion 
+3. Visa återvinningsinstruktion
+
+## Sekvensdiagram
+
+Sekvensdiagrammet  visar `createProduct`-flödet i systemet.
+
+Diagrammet visar hur:
+- konsolmenyn startar flödet
+- användarens input omvandlas till en CreateProductRequest
+- ProductService skapar produkten
+- SimpleImpactCalculator räknar ut miljöpåverkan
+- resultatet skickas tillbaka och skrivs ut för användaren
+
+[Visa Sequence Diagram](documentation/sequence-diagram-create-product.png)
 
 
 TEAM:
