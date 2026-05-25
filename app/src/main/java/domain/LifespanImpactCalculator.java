@@ -7,9 +7,9 @@ public class LifespanImpactCalculator implements CalculateImpact {
 
         double totalImpact = 0.0;
 
-        for (ProductMaterial pm : product.getMaterials()) {
-            totalImpact += pm.getMaterial().getImpact()
-                    * (pm.getPercentage() / 100.0);
+        for (ProductMaterial productMaterial : product.getMaterials()) {
+            totalImpact += productMaterial.getMaterial().getImpact()
+                    * (productMaterial.getPercentage() / 100.0);
         }
 
         if (totalImpact <= 0) {

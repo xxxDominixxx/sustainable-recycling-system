@@ -99,13 +99,13 @@ public class ProductView {
 
         System.out.println("\nMaterials:");
 
-        for (ProductMaterial pm : found.getMaterials()) {
+        for (ProductMaterial productMaterial : found.getMaterials()) {
 
             System.out.println(
                     "- "
-                            + pm.getMaterial().getMaterialName()
+                            + productMaterial.getMaterial().getMaterialName()
                             + " ("
-                            + pm.getPercentage()
+                            + productMaterial.getPercentage()
                             + "%)"
             );
         }

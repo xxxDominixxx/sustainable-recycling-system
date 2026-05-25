@@ -1,13 +1,13 @@
 package application;
 
 public class CreateProductResult {
-    private String productName;
+    private String productType;
 
     public CreateProductResult(String productName) {
-        this.productName = productName;
+        this.productType = productName;
     }
     public String getProductName() {
-        return productName;
+        return productType;
     }
 
 }

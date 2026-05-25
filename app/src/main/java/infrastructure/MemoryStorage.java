@@ -37,11 +37,11 @@ public class MemoryStorage implements ProductStorage {
             sb.append(product.getCalculatedImpact()).append("|");
 
             // materials: name:percentage;name:percentage
-            for (ProductMaterial pm : product.getMaterials()) {
+            for (ProductMaterial productMaterial : product.getMaterials()) {
 
-                sb.append(pm.getMaterial().getMaterialName())
+                sb.append(productMaterial.getMaterial().getMaterialName())
                   .append(":")
-                  .append(pm.getPercentage())
+                  .append(productMaterial.getPercentage())
                   .append(";");
             }
 
