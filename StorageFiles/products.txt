@@ -1,3 +1,1 @@
 Chair|LOW|149|0.6733|Wood:93.0;Cotton Fabric:7.0;
-Sofa|HIGH|46|2.2|Virgin Steel:100.0;
-sofa|MIXED|272|0.3689|Wood:69.0;Paper:31.0;

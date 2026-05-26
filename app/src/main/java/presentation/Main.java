@@ -45,8 +45,6 @@ public class Main {
                 materialService
         );
 
-        RecyclingMenu menuR = new RecyclingMenu(scanner);
-
         String choice;
 
         do {
@@ -61,10 +59,6 @@ public class Main {
 
                 case "2":
                     menuM.run();
-                    break;
-
-                case "3":
-                    menuR.run();
                     break;
 
                 case "q":

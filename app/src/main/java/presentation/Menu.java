@@ -15,7 +15,6 @@ public class Menu {
         System.out.println("=================");
         System.out.println("1) Go to Product menu");
         System.out.println("2) Go to Material menu");
-        System.out.println("3) Go to Recycling menu");
         System.out.println("q) Quit");
         System.out.println("=================");
     }
