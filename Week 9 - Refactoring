@@ -1,3 +1,3 @@
 Week 9 – Refactoring. 
 -	Ändrat namn på productName till productType för att förtydliga att man ska skriva in en product typ inte ett product namn. 
--	Ändrat förkortning pm och förtydligat till productmaterial, till exempel tidigare: for (ProductMaterial pm : materials) till for (ProductMaterial productMaterial : materials 
+-	Ändrat förkortning pm och förtydligat till productmaterial, till exempel tidigare: for (ProductMaterial pm : materials) till for (ProductMaterial productMaterial : materials. Syftet med denna refaktorisering är att förtydliga för andra utvecklare. 
