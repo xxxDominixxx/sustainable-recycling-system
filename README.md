@@ -169,7 +169,7 @@ Diagrammet visar hur:
 - SimpleImpactCalculator räknar ut miljöpåverkan
 - resultatet skickas tillbaka och skrivs ut för användaren
 
-[Visa Sequence Diagram](Sekvensdiagram.png)
+[Visa Sequence Diagram](sekvensdiagram.png)
 
 
 TEAM:
