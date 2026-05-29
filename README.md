@@ -68,6 +68,41 @@ ENTITIES:
 ### UNSURE:
 - Meny
 
+
+## Build
+
+Projektet byggs med Gradle.
+
+./gradlew build
+
+eller
+
+gradlew.bat build
+
+## Run
+
+Projektet är ett konsolbaserat Java-program.
+
+./gradlew run
+
+eller
+
+gradlew.bat run
+
+## Continuous Integration
+
+Projektet använder GitHub Actions för kontinuerlig integration.
+
+CI-pipelinen finns i:
+
+.github/workflows/ci.yml
+
+Vid varje push och pull request:
+
+- Projektet byggs automatiskt
+- Samtliga tester körs
+- Eventuella fel rapporteras direkt via GitHub Actions
+
 # ARKITEKTURELLA BESLUT:
 
 Systemet är uppbyggt enligt en lagerarkitektur med fyra lager:
