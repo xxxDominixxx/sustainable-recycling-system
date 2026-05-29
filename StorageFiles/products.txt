@@ -1,0 +1,1 @@
+Chair|LOW|149|0.6733|Wood:93.0;Cotton Fabric:7.0;
